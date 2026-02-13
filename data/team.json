@@ -1,0 +1,94 @@
+[
+  {
+    "id": "ivanov",
+    "name": "Иванов Алексей",
+    "role": "Senior ML Engineer",
+    "skills": [
+      { "domain": "deep_learning", "level": "senior" },
+      { "domain": "computer_vision", "level": "senior" },
+      { "domain": "mlops", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["pred_quality"]
+  },
+  {
+    "id": "petrova",
+    "name": "Петрова Мария",
+    "role": "ML Engineer",
+    "skills": [
+      { "domain": "nlp", "level": "senior" },
+      { "domain": "ml_classical", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["nlp_defects"]
+  },
+  {
+    "id": "sidorov",
+    "name": "Сидоров Дмитрий",
+    "role": "Senior DS",
+    "skills": [
+      { "domain": "optimization", "level": "expert" },
+      { "domain": "ml_classical", "level": "senior" },
+      { "domain": "computer_vision", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["opt_shihta"]
+  },
+  {
+    "id": "kozlov",
+    "name": "Козлов Игорь",
+    "role": "Data Analyst",
+    "skills": [
+      { "domain": "analytics", "level": "senior" },
+      { "domain": "time_series", "level": "middle" },
+      { "domain": "data_engineering", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["analytics_downtime"]
+  },
+  {
+    "id": "volkova",
+    "name": "Волкова Анна",
+    "role": "ML Engineer",
+    "skills": [
+      { "domain": "time_series", "level": "senior" },
+      { "domain": "statistics", "level": "senior" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["pred_quality"]
+  },
+  {
+    "id": "novikov",
+    "name": "Новиков Сергей",
+    "role": "DS / MLOps",
+    "skills": [
+      { "domain": "mlops", "level": "expert" },
+      { "domain": "data_engineering", "level": "senior" },
+      { "domain": "ml_classical", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["mlops_platform"]
+  },
+  {
+    "id": "egorova",
+    "name": "Егорова Ольга",
+    "role": "Junior DS",
+    "skills": [
+      { "domain": "ml_classical", "level": "junior" },
+      { "domain": "analytics", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["analytics_downtime"]
+  },
+  {
+    "id": "morozov",
+    "name": "Морозов Павел",
+    "role": "Data Engineer",
+    "skills": [
+      { "domain": "data_engineering", "level": "expert" },
+      { "domain": "analytics", "level": "middle" }
+    ],
+    "weekly_capacity_hours": 40,
+    "current_projects": ["data_lake"]
+  }
+]

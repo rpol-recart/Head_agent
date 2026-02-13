@@ -1,0 +1,172 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "anthropic/claude-sonnet-4-5-20250929",
+  "small_model": "anthropic/claude-haiku-4-5-20251001",
+
+  "instructions": [
+    "AGENTS.md",
+    "VISION.md"
+  ],
+
+  "default_agent": "orchestrator",
+
+  "agent": {
+    "orchestrator": {
+      "description": "Главный координатор: определяет намерение руководителя и маршрутизирует к нужному агенту. Используйте как точку входа для любого запроса.",
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:.opencode/agents/orchestrator.md}",
+      "temperature": 0.2,
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "webfetch": true,
+        "skill": true
+      },
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "cat *": "allow",
+          "ls *": "allow",
+          "git status": "allow",
+          "git log *": "allow"
+        },
+        "skill": {
+          "*": "allow"
+        },
+        "task": {
+          "*": "allow"
+        }
+      }
+    },
+
+    "scheduler": {
+      "description": "Планировщик дня руководителя: принимает задачи из чата, классифицирует (quick/communication/deep_work), планирует день с правилом 60%. Вызывайте @scheduler для ввода задач и планирования.",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:.opencode/agents/scheduler.md}",
+      "temperature": 0.1,
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": false,
+        "webfetch": false,
+        "skill": true
+      },
+      "permission": {
+        "edit": "allow",
+        "skill": {
+          "task-classify": "allow",
+          "day-plan-60pct": "allow"
+        }
+      }
+    },
+
+    "task-monitor": {
+      "description": "Мониторинг проектов и контроль делегирования: статус проектов, алерты, формулирование задач для подчинённых, чекпоинты. Вызывайте @task-monitor для контроля задач.",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:.opencode/agents/task-monitor.md}",
+      "temperature": 0.1,
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": false,
+        "webfetch": false,
+        "skill": true
+      },
+      "permission": {
+        "edit": "allow",
+        "skill": {
+          "delegate-task": "allow",
+          "workload-check": "allow"
+        }
+      }
+    },
+
+    "tz-analyst": {
+      "description": "Анализ технических заданий: декомпозиция, PERT-оценка сроков, выявление рисков, подбор команды. Вызывайте @tz-analyst для оценки новых ТЗ.",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:.opencode/agents/tz-analyst.md}",
+      "temperature": 0.2,
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": false,
+        "webfetch": true,
+        "skill": true
+      },
+      "permission": {
+        "edit": "allow",
+        "skill": {
+          "pert-estimate": "allow",
+          "tz-analyze": "allow"
+        }
+      }
+    },
+
+    "team-analytics": {
+      "description": "Аналитика команды: загрузка сотрудников, матрица навыков, поиск свободного исполнителя. Вызывайте @team-analytics для анализа ресурсов.",
+      "mode": "subagent",
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "prompt": "{file:.opencode/agents/team-analytics.md}",
+      "temperature": 0.1,
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false,
+        "webfetch": false,
+        "skill": true
+      },
+      "permission": {
+        "skill": {
+          "workload-check": "allow"
+        }
+      }
+    },
+
+    "reporter": {
+      "description": "Генерация отчётов и дайджестов: утренний дайджест, еженедельный отчёт, ad-hoc сводки. Вызывайте @reporter для отчётов.",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:.opencode/agents/reporter.md}",
+      "temperature": 0.3,
+      "tools": {
+        "write": true,
+        "edit": false,
+        "bash": false,
+        "webfetch": false,
+        "skill": true
+      },
+      "permission": {
+        "edit": "deny",
+        "skill": {
+          "morning-digest": "allow",
+          "weekly-report": "allow"
+        }
+      }
+    },
+
+    "memory": {
+      "description": "Долгосрочная память системы: хранение задач, связи людей с проектами, история решений, калибровка оценок. Вызывайте @memory для поиска контекста.",
+      "mode": "subagent",
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "prompt": "{file:.opencode/agents/memory.md}",
+      "temperature": 0.0,
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": false,
+        "webfetch": false,
+        "skill": false
+      },
+      "permission": {
+        "edit": "allow"
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "pred_quality",
+    "name": "Предиктивное качество проката",
+    "customer": "Прокатный цех",
+    "status": "in_progress",
+    "assigned_employees": ["ivanov", "volkova"],
+    "start_date": "2026-01-06",
+    "deadline": "2026-02-15",
+    "estimated_hours": 96,
+    "actual_hours": 72,
+    "progress_pct": 75,
+    "tags": ["cv", "quality", "прокат", "датчики"]
+  },
+  {
+    "id": "nlp_defects",
+    "name": "NLP-классификатор дефектов",
+    "customer": "ОТК",
+    "status": "review",
+    "assigned_employees": ["petrova"],
+    "start_date": "2026-01-13",
+    "deadline": "2026-02-21",
+    "estimated_hours": 64,
+    "actual_hours": 56,
+    "progress_pct": 90,
+    "tags": ["nlp", "дефекты", "классификация"]
+  },
+  {
+    "id": "opt_shihta",
+    "name": "Оптимизация шихты",
+    "customer": "Доменный цех",
+    "status": "in_progress",
+    "assigned_employees": ["sidorov"],
+    "start_date": "2025-12-01",
+    "deadline": "2026-03-01",
+    "estimated_hours": 200,
+    "actual_hours": 120,
+    "progress_pct": 55,
+    "tags": ["optimization", "шихта", "домна"]
+  },
+  {
+    "id": "analytics_downtime",
+    "name": "Аналитика простоев оборудования",
+    "customer": "Служба главного механика",
+    "status": "in_progress",
+    "assigned_employees": ["kozlov", "egorova"],
+    "start_date": "2026-01-20",
+    "deadline": "2026-03-15",
+    "estimated_hours": 80,
+    "actual_hours": 20,
+    "progress_pct": 25,
+    "tags": ["analytics", "простои", "time_series"]
+  },
+  {
+    "id": "mlops_platform",
+    "name": "MLOps платформа",
+    "customer": "DS отдел (внутренний)",
+    "status": "in_progress",
+    "assigned_employees": ["novikov"],
+    "estimated_hours": 160,
+    "actual_hours": 80,
+    "progress_pct": 50,
+    "tags": ["mlops", "инфраструктура", "ci_cd"]
+  },
+  {
+    "id": "data_lake",
+    "name": "Интеграция Data Lake",
+    "customer": "IT Департамент",
+    "status": "in_progress",
+    "assigned_employees": ["morozov"],
+    "start_date": "2026-01-01",
+    "deadline": "2026-04-01",
+    "estimated_hours": 120,
+    "actual_hours": 40,
+    "progress_pct": 30,
+    "tags": ["data_engineering", "озеро_данных", "интеграция"]
+  },
+  {
+    "id": "pred_quality_old",
+    "name": "Предсказание качества проката (пилот)",
+    "customer": "Прокатный цех",
+    "status": "completed",
+    "assigned_employees": ["ivanov"],
+    "estimated_hours": 96,
+    "actual_hours": 124,
+    "progress_pct": 100,
+    "tags": ["cv", "quality", "прокат"]
+  }
+]

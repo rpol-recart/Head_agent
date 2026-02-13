@@ -1,0 +1,17 @@
+{
+  "by_domain": {
+    "cv": { "correction_factor": 1.29, "sample_size": 1, "note": "Проект 'Предсказание качества проката' — оценка 96ч, факт 124ч (+29%)" },
+    "nlp": { "correction_factor": 1.10, "sample_size": 0, "note": "Оценка по отраслевым бенчмаркам" },
+    "tabular": { "correction_factor": 1.05, "sample_size": 0, "note": "Оценка по отраслевым бенчмаркам" },
+    "optimization": { "correction_factor": 1.15, "sample_size": 0, "note": "Оценка по отраслевым бенчмаркам" }
+  },
+  "by_task_type": {
+    "quick": { "accuracy_pct": 90, "avg_overrun_pct": 5 },
+    "communication": { "accuracy_pct": 85, "avg_overrun_pct": 10 },
+    "deep_work": { "accuracy_pct": 65, "avg_overrun_pct": 25 }
+  },
+  "by_risk_factor": {
+    "external_data_dependency": { "correction_factor": 1.20, "note": "Задержки с получением данных от IT/OT" },
+    "new_domain": { "correction_factor": 1.25, "note": "Незнакомая предметная область" }
+  }
+}

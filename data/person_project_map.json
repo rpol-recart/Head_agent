@@ -1,0 +1,11 @@
+{
+  "краснов": { "project_id": "pred_defects_ceh3", "role": "заказчик, начальник цеха 3" },
+  "иванов":  { "project_id": "pred_quality", "role": "исполнитель, senior ML" },
+  "петрова": { "project_id": "nlp_defects", "role": "исполнитель, ML engineer" },
+  "сидоров": { "project_id": "opt_shihta", "role": "исполнитель, senior DS" },
+  "козлов":  { "project_id": "analytics_downtime", "role": "исполнитель, analyst" },
+  "волкова": { "project_id": "pred_quality", "role": "исполнитель, ML engineer" },
+  "новиков": { "project_id": "mlops_platform", "role": "исполнитель, MLOps" },
+  "егорова": { "project_id": "analytics_downtime", "role": "исполнитель, junior DS" },
+  "морозов": { "project_id": "data_lake", "role": "исполнитель, data engineer" }
+}

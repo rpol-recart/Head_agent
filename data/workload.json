@@ -1,0 +1,50 @@
+[
+  {
+    "employee_id": "ivanov",
+    "week_start": "2026-02-10",
+    "planned_hours": 38,
+    "projects_breakdown": { "pred_quality": 38 }
+  },
+  {
+    "employee_id": "petrova",
+    "week_start": "2026-02-10",
+    "planned_hours": 32,
+    "projects_breakdown": { "nlp_defects": 24, "code_review": 8 }
+  },
+  {
+    "employee_id": "sidorov",
+    "week_start": "2026-02-10",
+    "planned_hours": 40,
+    "projects_breakdown": { "opt_shihta": 40 }
+  },
+  {
+    "employee_id": "kozlov",
+    "week_start": "2026-02-10",
+    "planned_hours": 24,
+    "projects_breakdown": { "analytics_downtime": 24 }
+  },
+  {
+    "employee_id": "volkova",
+    "week_start": "2026-02-10",
+    "planned_hours": 36,
+    "projects_breakdown": { "pred_quality": 36 }
+  },
+  {
+    "employee_id": "novikov",
+    "week_start": "2026-02-10",
+    "planned_hours": 32,
+    "projects_breakdown": { "mlops_platform": 32 }
+  },
+  {
+    "employee_id": "egorova",
+    "week_start": "2026-02-10",
+    "planned_hours": 30,
+    "projects_breakdown": { "analytics_downtime": 30 }
+  },
+  {
+    "employee_id": "morozov",
+    "week_start": "2026-02-10",
+    "planned_hours": 28,
+    "projects_breakdown": { "data_lake": 28 }
+  }
+]
