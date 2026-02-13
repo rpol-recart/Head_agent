@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "description": "Общая онтология DS-отдела: сущности, связи, таксономия тегов",
+    "version": "1.0",
+    "updated_at": "2026-02-13"
+  },
+
+  "entities": {
+    "people": {
+      "internal": {
+        "ivanov":   { "full_name": "Иванов Алексей",   "role": "Senior ML Engineer",  "department": "DS" },
+        "petrova":  { "full_name": "Петрова Мария",     "role": "ML Engineer",         "department": "DS" },
+        "sidorov":  { "full_name": "Сидоров Дмитрий",   "role": "Senior DS",           "department": "DS" },
+        "kozlov":   { "full_name": "Козлов Игорь",      "role": "Data Analyst",        "department": "DS" },
+        "volkova":  { "full_name": "Волкова Анна",      "role": "ML Engineer",         "department": "DS" },
+        "novikov":  { "full_name": "Новиков Сергей",    "role": "DS / MLOps",          "department": "DS" },
+        "egorova":  { "full_name": "Егорова Ольга",     "role": "Junior DS",           "department": "DS" },
+        "morozov":  { "full_name": "Морозов Павел",     "role": "Data Engineer",       "department": "DS" }
+      },
+      "external": {
+        "krasnov":  { "full_name": "Краснов Виктор",    "role": "Начальник цеха №3",   "department": "Производство" },
+        "belov":    { "full_name": "Белов Андрей",      "role": "Главный механик",     "department": "Служба ГМ" },
+        "sokolov":  { "full_name": "Соколов Игорь",     "role": "Начальник ОТК",       "department": "ОТК" },
+        "kuznetsov":{ "full_name": "Кузнецов Пётр",     "role": "CIO",                 "department": "IT" }
+      }
+    },
+
+    "projects": {
+      "pred_quality":       { "label": "Предиктивное качество проката",     "domain": "cv" },
+      "nlp_defects":        { "label": "NLP-классификатор дефектов",        "domain": "nlp" },
+      "opt_shihta":         { "label": "Оптимизация шихты",                 "domain": "optimization" },
+      "analytics_downtime": { "label": "Аналитика простоев оборудования",   "domain": "analytics" },
+      "mlops_platform":     { "label": "MLOps платформа",                   "domain": "mlops" },
+      "data_lake":          { "label": "Интеграция Data Lake",              "domain": "data_engineering" }
+    },
+
+    "processes": {
+      "casting":    { "label": "Литьё",                "location": "Цех №3" },
+      "rolling":    { "label": "Прокат",               "location": "Прокатный цех" },
+      "smelting":   { "label": "Выплавка / Домна",     "location": "Доменный цех" },
+      "quality_control": { "label": "Контроль качества", "location": "ОТК" }
+    },
+
+    "technologies": {
+      "pytorch":    { "category": "framework",   "used_in": ["pred_quality"] },
+      "fastapi":    { "category": "api",         "used_in": ["pred_quality", "nlp_defects"] },
+      "airflow":    { "category": "orchestration","used_in": ["mlops_platform"] },
+      "spark":      { "category": "processing",  "used_in": ["data_lake", "analytics_downtime"] },
+      "mlflow":     { "category": "tracking",    "used_in": ["mlops_platform"] },
+      "transformers":{ "category": "nlp",        "used_in": ["nlp_defects"] },
+      "catboost":   { "category": "ml",          "used_in": ["opt_shihta"] }
+    },
+
+    "data_sources": {
+      "opc_sensors":   { "label": "OPC-сервер (датчики)",       "owner": "IT/OT", "projects": ["pred_quality"] },
+      "mes":           { "label": "MES (управление производством)", "owner": "IT", "projects": ["pred_quality", "analytics_downtime"] },
+      "defect_reports":{ "label": "Журналы дефектов (ОТК)",     "owner": "ОТК",   "projects": ["nlp_defects"] },
+      "erp":           { "label": "ERP (ресурсы, шихта)",       "owner": "IT",    "projects": ["opt_shihta"] },
+      "cmms":          { "label": "CMMS (ремонты, ТО)",         "owner": "ГМ",    "projects": ["analytics_downtime"] }
+    }
+  },
+
+  "relationships": [
+    { "from": "krasnov",  "to": "pred_quality",       "type": "customer" },
+    { "from": "krasnov",  "to": "casting",             "type": "manages" },
+    { "from": "sokolov",  "to": "nlp_defects",         "type": "customer" },
+    { "from": "sokolov",  "to": "quality_control",     "type": "manages" },
+    { "from": "belov",    "to": "analytics_downtime",  "type": "customer" },
+    { "from": "kuznetsov","to": "data_lake",            "type": "customer" },
+    { "from": "kuznetsov","to": "mlops_platform",       "type": "stakeholder" },
+
+    { "from": "ivanov",   "to": "pred_quality",         "type": "lead" },
+    { "from": "volkova",  "to": "pred_quality",         "type": "contributor" },
+    { "from": "petrova",  "to": "nlp_defects",          "type": "lead" },
+    { "from": "sidorov",  "to": "opt_shihta",           "type": "lead" },
+    { "from": "kozlov",   "to": "analytics_downtime",   "type": "lead" },
+    { "from": "egorova",  "to": "analytics_downtime",   "type": "contributor" },
+    { "from": "novikov",  "to": "mlops_platform",       "type": "lead" },
+    { "from": "morozov",  "to": "data_lake",            "type": "lead" },
+
+    { "from": "pred_quality",       "to": "opc_sensors",    "type": "consumes_data" },
+    { "from": "pred_quality",       "to": "mes",            "type": "consumes_data" },
+    { "from": "nlp_defects",        "to": "defect_reports",  "type": "consumes_data" },
+    { "from": "opt_shihta",         "to": "erp",             "type": "consumes_data" },
+    { "from": "analytics_downtime", "to": "cmms",            "type": "consumes_data" },
+    { "from": "analytics_downtime", "to": "mes",             "type": "consumes_data" },
+
+    { "from": "pred_quality",  "to": "rolling",    "type": "targets_process" },
+    { "from": "nlp_defects",   "to": "quality_control", "type": "targets_process" },
+    { "from": "opt_shihta",    "to": "smelting",   "type": "targets_process" }
+  ],
+
+  "tags_taxonomy": {
+    "domain": [
+      "cv", "nlp", "optimization", "analytics", "time_series",
+      "data_engineering", "mlops", "deep_learning", "ml_classical", "statistics"
+    ],
+    "artifact_type": [
+      "tz", "note", "report", "digest", "meeting_notes",
+      "architecture_decision", "retrospective", "eda_report", "model_card"
+    ],
+    "priority": ["P0", "P1", "P2", "P3"],
+    "status": [
+      "draft", "review", "approved", "in_progress", "completed",
+      "cancelled", "on_hold", "overdue"
+    ],
+    "production_area": [
+      "цех_3", "прокат", "домна", "отк", "data_infra"
+    ]
+  }
+}

@@ -15,20 +15,42 @@
 2. **Не додумывай** — если непонятно, уточни
 3. **Кратко и структурированно** — руководитель ценит время
 4. **Данные в JSON** — все данные хранятся в `data/*.json`
+5. **Артефакты в Markdown** — ТЗ, заметки, отчёты в `data/artifacts/` с YAML frontmatter и чеклистами
+6. **Онтология** — общий граф знаний в `data/ontology.json`
 
 ## Структура данных
 
 ```
 data/
-├── team.json              # профили 8 сотрудников + навыки
-├── projects.json          # все проекты (активные + завершённые)
-├── workload.json          # загрузка по неделям
-├── leader_tasks.json      # все задачи руководителя из чата
-├── delegated_tasks.json   # задачи, делегированные подчинённым
-├── day_plan.json          # план дня (текущий)
-├── person_project_map.json # карта связей: человек → проект
-└── calibration.json       # калибровка оценок (план vs факт)
+├── team.json               # профили 8 сотрудников + навыки
+├── projects.json            # все проекты (активные + завершённые)
+├── workload.json            # загрузка по неделям
+├── leader_tasks.json        # все задачи руководителя из чата
+├── delegated_tasks.json     # задачи, делегированные подчинённым
+├── day_plan.json            # план дня (текущий)
+├── person_project_map.json  # карта связей: человек → проект
+├── calibration.json         # калибровка оценок (план vs факт)
+├── ontology.json            # граф знаний: сущности, связи, теги
+└── artifacts/
+    ├── index.json           # поисковый индекс всех артефактов
+    ├── tz/                  # технические задания (.md)
+    ├── notes/               # заметки, протоколы, ADR (.md)
+    └── reports/             # отчёты, дайджесты (.md)
 ```
+
+## Артефакты
+
+Каждый артефакт — `.md` файл с YAML frontmatter (id, type, title, tags, status,
+project_id, related_people, checklist_total/done) и чеклистами `- [x]` / `- [ ]`.
+Типы: `tz`, `note`, `meeting_notes`, `architecture_decision`, `report`, `model_card`, `eda_report`.
+Поиск через `data/artifacts/index.json`.
+
+## Онтология
+
+`data/ontology.json` — единый граф знаний:
+- **entities**: люди (внутренние + внешние), проекты, процессы, технологии, источники данных
+- **relationships**: связи (customer, lead, contributor, consumes_data, targets_process, manages)
+- **tags_taxonomy**: таксономия тегов (domain, artifact_type, priority, status, production_area)
 
 ## Правило 60%
 
@@ -52,4 +74,5 @@ data/
 | Анализ ТЗ, оценка сроков | @tz-analyst |
 | Загрузка команды, навыки | @team-analytics |
 | Дайджесты, отчёты | @reporter |
+| Артефакты (ТЗ, заметки, отчёты), онтология, поиск документов | @archivist |
 | История, контекст, калибровка | @memory |
