@@ -170,7 +170,7 @@
     },
 
     "archivist": {
-      "description": "Архивариус: хранение, поиск и управление артефактами (ТЗ, заметки, отчёты в Markdown с чеклистами). Ведение онтологии знаний. Вызывайте @archivist для работы с документами.",
+      "description": "Архивариус: хранение, поиск и управление артефактами (ТЗ, заметки, отчёты в Markdown с чеклистами). Чтение docx/xlsx, экспорт md→docx. Ведение онтологии знаний. Вызывайте @archivist для работы с документами.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5-20250929",
       "prompt": "{file:.opencode/agents/archivist.md}",
@@ -178,15 +178,20 @@
       "tools": {
         "write": true,
         "edit": true,
-        "bash": false,
+        "bash": true,
         "webfetch": false,
         "skill": true
       },
       "permission": {
         "edit": "allow",
+        "bash": {
+          "*": "deny",
+          "python3 scripts/docconv.py *": "allow"
+        },
         "skill": {
           "artifact-manage": "allow",
-          "ontology-query": "allow"
+          "ontology-query": "allow",
+          "doc-convert": "allow"
         }
       }
     }

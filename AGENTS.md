@@ -45,6 +45,16 @@ project_id, related_people, checklist_total/done) и чеклистами `- [x]
 Типы: `tz`, `note`, `meeting_notes`, `architecture_decision`, `report`, `model_card`, `eda_report`.
 Поиск через `data/artifacts/index.json`.
 
+## Импорт/экспорт документов
+
+Скрипт `scripts/docconv.py` + скилл `doc-convert`:
+- **Чтение .docx** → markdown (заголовки, списки, таблицы)
+- **Чтение .xlsx** → markdown-таблицы (все листы или конкретный)
+- **Экспорт .md → .docx** через pandoc (для отправки заказчикам)
+- **Экспорт .md → .pdf** через pandoc (если pdflatex доступен)
+
+Зависимости: `python-docx`, `openpyxl`, `pypandoc-binary`.
+
 ## Онтология
 
 `data/ontology.json` — единый граф знаний:
